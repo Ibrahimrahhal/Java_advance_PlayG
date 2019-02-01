@@ -6,7 +6,7 @@ public class Main {
 
     public static void main(String[] argv){
         URL google = null;
-        URLConnection getGoogle=null;
+        HttpURLConnection getGoogle=null;
         String hldSTR;
         try {
              google = new URL("https://arabic-name-generator.herokuapp.com/");
@@ -14,7 +14,7 @@ public class Main {
             e.printStackTrace();
         }
         try {
-            getGoogle = google.openConnection();
+            getGoogle = (HttpURLConnection)google.openConnection();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -24,6 +24,7 @@ public class Main {
             while ((hldSTR = objReader.readLine()) != null) {
                 System.out.println(hldSTR);
             }
+            System.out.println(getGoogle.getContentType());
         } catch (IOException e) {
             e.printStackTrace();
         }
